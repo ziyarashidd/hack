@@ -60,7 +60,7 @@ export default function UserPanel() {
 
     // send to backend
     try{
-      await fetch("http://localhost:5000/api/score",{
+      await fetch("https://hackcfdb.onrender.com/api/score",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
