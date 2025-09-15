@@ -30,7 +30,7 @@ const PdfUpload = () => {
     formData.append("pdf", file);
 
     try {
-      const res = await fetch("http://localhost:5000/upload", {
+      const res = await fetch("https://hackcfdb.onrender.com/upload", {
         method: "POST",
         body: formData,
       });
