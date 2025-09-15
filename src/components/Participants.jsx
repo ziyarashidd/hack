@@ -4,7 +4,7 @@ export default function Participants() {
   const [scorecards, setScorecards] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/participants")
+    fetch("https://hackcfdb.onrender.com/api/participants")
       .then(res => res.json())
       .then(setScorecards);
   }, []);
