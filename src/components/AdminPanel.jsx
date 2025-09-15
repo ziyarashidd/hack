@@ -16,7 +16,7 @@ export default function AdminPanel({ setIsAdminAuth }) {
 
   const fetchQuestions = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/questions");
+      const res = await fetch("https://hackcfdb.onrender.com/api/questions");
       const data = await res.json();
       setQuestions(data);
     } catch (err) {
@@ -34,13 +34,13 @@ export default function AdminPanel({ setIsAdminAuth }) {
     try {
       let res;
       if (editingId) {
-        res = await fetch(`http://localhost:5000/api/questions/${editingId}`, {
+        res = await fetch(`https://hackcfdb.onrender.com/api/questions/${editingId}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),
         });
       } else {
-        res = await fetch("http://localhost:5000/api/questions", {
+        res = await fetch("https://hackcfdb.onrender.com/api/questions", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),
@@ -58,7 +58,7 @@ export default function AdminPanel({ setIsAdminAuth }) {
   const deleteQuestion = async (id) => {
     if (!window.confirm("Delete this question?")) return;
     try {
-      await fetch(`http://localhost:5000/api/questions/${id}`, { method: "DELETE" });
+      await fetch(`https://hackcfdb.onrender.com/api/questions/${id}`, { method: "DELETE" });
       fetchQuestions();
     } catch (err) {
       console.error(err);
@@ -69,7 +69,7 @@ export default function AdminPanel({ setIsAdminAuth }) {
   const [scorecards, setScorecards] = useState([]);
   const fetchScorecards = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/participants");
+      const res = await fetch("https://hackcfdb.onrender.com/api/participants");
       const data = await res.json();
       setScorecards(data);
     } catch (err) {
@@ -80,7 +80,7 @@ export default function AdminPanel({ setIsAdminAuth }) {
   const deleteScorecard = async (id) => {
     if (!window.confirm("Delete this scorecard?")) return;
     try {
-      await fetch(`http://localhost:5000/api/score/${id}`, { method: "DELETE" });
+      await fetch(`https://hackcfdb.onrender.com/api/score/${id}`, { method: "DELETE" });
       fetchScorecards();
     } catch (err) {
       console.error(err);
@@ -92,7 +92,7 @@ export default function AdminPanel({ setIsAdminAuth }) {
   const [permissions, setPermissions] = useState([]);
   const fetchPermissions = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/permissions");
+      const res = await fetch("https://hackcfdb.onrender.com/api/permissions");
       const data = await res.json();
       setPermissions(data);
     } catch (err) {
@@ -102,7 +102,7 @@ export default function AdminPanel({ setIsAdminAuth }) {
 
   const togglePermission = async (email, remaining) => {
     try {
-      await fetch(`http://localhost:5000/api/permission/${email}`, {
+      await fetch(`https://hackcfdb.onrender.com/api/permission/${email}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ remaining: remaining > 0 ? 0 : 1 }),
@@ -116,7 +116,7 @@ export default function AdminPanel({ setIsAdminAuth }) {
   const deletePermission = async (email) => {
     if (!window.confirm("Delete this permission?")) return;
     try {
-      await fetch(`http://localhost:5000/api/permission/${email}`, { method: "DELETE" });
+      await fetch(`https://hackcfdb.onrender.com/api/permission/${email}`, { method: "DELETE" });
       fetchPermissions();
     } catch (err) {
       console.error(err);
@@ -129,7 +129,7 @@ export default function AdminPanel({ setIsAdminAuth }) {
 
   const fetchSubmissions = async () => {
     try {
-      const res = await fetch("http://localhost:5000/submissions");
+      const res = await fetch("https://hackcfdb.onrender.com/submissions");
       const data = await res.json();
       setSubmissions(data);
     } catch (err) {
@@ -142,7 +142,7 @@ export default function AdminPanel({ setIsAdminAuth }) {
   const handleDeletePDF = async (id) => {
     if (!window.confirm("Delete this PDF submission?")) return;
     try {
-      await fetch(`http://localhost:5000/submissions/${id}`, { method: "DELETE" });
+      await fetch(`https://hackcfdb.onrender.com/submissions/${id}`, { method: "DELETE" });
       fetchSubmissions();
     } catch (err) {
       console.error(err);
@@ -151,7 +151,7 @@ export default function AdminPanel({ setIsAdminAuth }) {
 
   const handleRatePDF = async (id, rating) => {
     try {
-      await fetch(`http://localhost:5000/submissions/${id}/rate`, {
+      await fetch(`https://hackcfdb.onrender.com/submissions/${id}/rate`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ rating: Number(rating) }),
