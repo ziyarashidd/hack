@@ -7,7 +7,7 @@ export default function SelectedList() {
   useEffect(() => {
     const fetchSubmissions = async () => {
       try {
-        const res = await fetch("http://localhost:5000/submissions");
+        const res = await fetch("https://hackcfdb.onrender.com/submissions");
         const data = await res.json();
         setSubmissions(data);
       } catch (err) {
